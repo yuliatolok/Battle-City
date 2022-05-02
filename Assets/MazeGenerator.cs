@@ -24,26 +24,42 @@ public class MazeGenerator : MonoBehaviour
             {
                 maze[x, y] = false;
             }
-GenerateCells();
-WallEnable();
+        GenerateCells();
+        GenerateWalls();
+        WallEnable();
 
     }
 
+    private void GenerateWalls()
+    {
+        for (int i = 0; i < height; i++)
+        {
+            maze[0, i] = true;
+            maze[width - 1, i] = true;
+        }
+        for (int i = 0; i < width; i++)
+        {
+            maze[i, 0] = true;
+            maze[i, height - 1] = true;
+        }
+
+    }
 
     private void GenerateCells()
-    { 
+    {
         for (int i = 0; count < amount; i++)
         {
 
             int x = Random.Range(0, width);
             int y = Random.Range(0, height);
-            Debug.Log(x +' ' + y);
+
             if (!maze[x, y])
             {
                 maze[x, y] = true;
-                Debug.Log(maze[x, y]);
+                
                 count++;
             }
+
         }
     }
     void WallEnable()
