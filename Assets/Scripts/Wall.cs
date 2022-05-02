@@ -42,8 +42,9 @@ public class Wall : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, cellsize);
         if (hit.collider != null)
         {
-            Destroy(hit.collider.gameObject);
+             Destroy(hit.collider.gameObject);
         }
+
     }
 
 
